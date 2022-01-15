@@ -1,3 +1,7 @@
+from ntpath import join
+from operator import index
+
+
 HAGMAN_PICS = [
 [r"""
   +--+
@@ -59,17 +63,34 @@ HAGMAN_PICS = [
 ]
 
 
-palabra_adivinar = {'rosa'}
-palabra_adivinando = len(palabra_adivinar)* '-'
+palabra = 'rosa'
+letter_completed = ['_']*len(palabra)
 
-print(list(palabra_adivinando))
+letter_of_word = [i for i in palabra]
 
-while palabra_adivinar != palabra_adivinando:
-    print(palabra_adivinando)
-    letra = input("Ingresa una letra: ")
-    if letra in palabra_adivinar:
-        palabra_adivinando = list(palabra_adivinando)
-        for i, x in enumerate(palabra_adivinar):
-            if x == letra:
-                palabra_adivinando[i] = x
-            palabra_adivinando = ''.join(palabra_adivinando)
+print(letter_of_word)
+
+#while letter_of_word == letter_completed:
+
+
+while letter_of_word != letter_completed:
+    letter = str(input('Ingresa una letra: '))
+
+    for i in letter_of_word:
+
+        if letter == i:
+            letter_completed[letter_of_word.index(i)] = i
+            print(letter_completed)    
+
+
+
+#    if letra in letter_of_word:
+
+
+#        print(' '.join(blank))
+
+
+#        print(letter_of_word.index(letra))
+#        blank.insert(letter_of_word.index(letra),letra)
+#        print(blank)
+#        letter_of_word.remove(letra)
