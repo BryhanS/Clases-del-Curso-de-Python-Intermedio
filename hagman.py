@@ -1,9 +1,10 @@
 from ntpath import join
 from operator import index
+from webbrowser import get
 
 
 HAGMAN_PICS = [
-[r"""
+    [r"""
   +--+
   |  |
      |
@@ -12,7 +13,7 @@ HAGMAN_PICS = [
      |
   =====""",
 
- r"""
+     r"""
   +--+
   |  |
   O  |
@@ -20,7 +21,7 @@ HAGMAN_PICS = [
      |
      |
   =====""",
- r"""
+     r"""
   +--+
   |  |
   O  |
@@ -28,7 +29,7 @@ HAGMAN_PICS = [
      |
      |
  =====""",
- r"""
+     r"""
   +--+
   |  |
   O  |
@@ -36,7 +37,7 @@ HAGMAN_PICS = [
      |
      |
  =====""",
- r"""
+     r"""
   +--+
   |  |
   O  |
@@ -44,7 +45,7 @@ HAGMAN_PICS = [
      |
      |
 =====""",
- r"""
+     r"""
    +--+
   |  |
   O  |
@@ -52,7 +53,7 @@ HAGMAN_PICS = [
  /   |
      |
  =====""",
- r"""
+     r"""
   +--+
   |  |
   O  |
@@ -62,35 +63,22 @@ HAGMAN_PICS = [
  ====="""]
 ]
 
+def insert_letter(player_letter, letter_of_word):
+    chances = 0
+    for i, letter in letter_of_word.items():
+        if player_letter == letter:
+            letter_completed[i] = player_letter
+        continue
+    return letter_completed
 
-palabra = 'rosa'
+
+palabra = 'casa'
 letter_completed = ['_']*len(palabra)
 
-letter_of_word = [i for i in palabra]
+letter_of_word = dict(enumerate([i for i in palabra]))
 
-print(letter_of_word)
+while palabra != str(''.join(letter_completed)):
 
-#while letter_of_word == letter_completed:
-
-
-while letter_of_word != letter_completed:
-    letter = str(input('Ingresa una letra: '))
-
-    for i in letter_of_word:
-
-        if letter == i:
-            letter_completed[letter_of_word.index(i)] = i
-            print(letter_completed)    
-
-
-
-#    if letra in letter_of_word:
-
-
-#        print(' '.join(blank))
-
-
-#        print(letter_of_word.index(letra))
-#        blank.insert(letter_of_word.index(letra),letra)
-#        print(blank)
-#        letter_of_word.remove(letra)
+    player_letter = str(input('Ingresa una letra: '))
+    insert_letter(player_letter, letter_of_word)
+    print(' '.join(letter_completed))
